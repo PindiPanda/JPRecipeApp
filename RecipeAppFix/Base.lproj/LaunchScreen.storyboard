@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rld-aF-v61">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="kuc-yg-m65">
+            <objects>
+                <viewController id="rld-aF-v61" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Qt7-9x-ZQU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="breadslaunch" translatesAutoresizingMaskIntoConstraints="NO" id="bCS-jN-Bql">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="78G-7P-5Su">
+                                <rect key="frame" x="16" y="120" width="382" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Lkf-WV-S1v"/>
+                                </constraints>
+                                <string key="text">John Parker's
+Recipes App</string>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="36"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="eZK-aH-TnV" firstAttribute="trailing" secondItem="78G-7P-5Su" secondAttribute="trailing" constant="16" id="MEW-Er-sS0"/>
+                            <constraint firstItem="bCS-jN-Bql" firstAttribute="top" secondItem="Qt7-9x-ZQU" secondAttribute="top" id="Obh-PL-ZOe"/>
+                            <constraint firstAttribute="bottom" secondItem="bCS-jN-Bql" secondAttribute="bottom" id="atk-DU-6L6"/>
+                            <constraint firstItem="78G-7P-5Su" firstAttribute="leading" secondItem="eZK-aH-TnV" secondAttribute="leading" constant="16" id="gW2-R9-MbR"/>
+                            <constraint firstItem="78G-7P-5Su" firstAttribute="top" secondItem="eZK-aH-TnV" secondAttribute="top" constant="76" id="myW-ha-lEc"/>
+                            <constraint firstItem="bCS-jN-Bql" firstAttribute="leading" secondItem="eZK-aH-TnV" secondAttribute="leading" id="p2q-bo-gPY"/>
+                            <constraint firstItem="bCS-jN-Bql" firstAttribute="trailing" secondItem="eZK-aH-TnV" secondAttribute="trailing" id="qQr-M0-1qJ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="eZK-aH-TnV"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8pC-gk-ldx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52.173913043478265" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="breadslaunch" width="1024" height="1024"/>
+    </resources>
+</document>

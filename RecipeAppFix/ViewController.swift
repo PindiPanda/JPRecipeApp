@@ -7,11 +7,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 70
+        
+        UserDefaultsManager.initializeDefaults()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        navigationController?.navigationBar.alpha = 0.5
+        //navigationController?.navigationBar.alpha = 0.5
         tableView.reloadData()
     }
     
@@ -23,16 +26,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let cell = tableView.dequeueReusableCell(withIdentifier: "customcell", for: indexPath) as! customcell
         
         if(indexPath.item % 2 == 0){
-            cell.backgroundColor = UIColor.clear
-        }else{
             cell.backgroundColor = UIColor.white.withAlphaComponent(0.2)
-            cell.textLabel?.backgroundColor = UIColor.white.withAlphaComponent(0.0)
+
+        }else{
+            cell.backgroundColor = UIColor.white.withAlphaComponent(0.3)
         }
         
         cell.textLabel?.textColor = UIColor.white
         let recipe = RecipeManager.recipes[indexPath.item]
+        cell.textLabel?.backgroundColor = UIColor.white.withAlphaComponent(0.0)
+        cell.textLabel?.font = UIFont(name:"AvenirNext-Medium", size: 18)
         cell.textLabel?.text = recipe.title
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+        cell.selectedBackgroundView = backgroundView
         cell.recipe = recipe
+        cell.layer.cornerRadius = 10
         return cell
     }
     

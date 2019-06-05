@@ -1,6 +1,6 @@
 import UIKit
 
-class AddViewController: UIViewController {
+class AddViewController: UIViewController, UITextViewDelegate {
     
     @IBOutlet var titleText: UITextField!
     @IBOutlet var recipeContent: UITextView!
@@ -11,13 +11,17 @@ class AddViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        titleText.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+        //titleText.backgroundColor = UIColor.black.withAlphaComponent(0.2)
         recipeContent.backgroundColor = UIColor.black.withAlphaComponent(0.2)
         
         addButton.isEnabled = false
         
         NotificationCenter.default.addObserver(self, selector: #selector(AddViewController.textTitleDidChange), name: UITextField.textDidChangeNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(AddViewController.recipeContentDidChange), name: UITextView.textDidChangeNotification, object: nil)
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        recipeContent.text = ""
     }
     
     @objc func textTitleDidChange(){
@@ -63,7 +67,10 @@ class AddViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: time) {
             self.activityIndicator.stopAnimating()
         }
+        doneButton.isEnabled = false
         addButton.isEnabled = false
         addButton.setTitleColor(UIColor.lightGray, for: UIControl.State.normal)
+        
+        UserDefaultsManager.synchronize()
     }
 }

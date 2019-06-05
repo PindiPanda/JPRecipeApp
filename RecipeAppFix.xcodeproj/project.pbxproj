@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		395C15D222A81C8300D7704B /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395C15D122A81C8300D7704B /* UserDefaultsManager.swift */; };
 		3997E6B222A7565500A7B1E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3997E6B122A7565500A7B1E6 /* AppDelegate.swift */; };
 		3997E6B422A7565500A7B1E6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3997E6B322A7565500A7B1E6 /* ViewController.swift */; };
 		3997E6B722A7565500A7B1E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3997E6B522A7565500A7B1E6 /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		395C15D122A81C8300D7704B /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		3997E6AE22A7565500A7B1E6 /* RecipeAppFix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeAppFix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3997E6B122A7565500A7B1E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3997E6B322A7565500A7B1E6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				3997E6C322A7599E00A7B1E6 /* Recipe.swift */,
 				3997E6C522A759C900A7B1E6 /* RecipeManager.swift */,
 				3997E6C722A75BFE00A7B1E6 /* customcell.swift */,
+				395C15D122A81C8300D7704B /* UserDefaultsManager.swift */,
 				3997E6B122A7565500A7B1E6 /* AppDelegate.swift */,
 				3997E6B822A7565700A7B1E6 /* Assets.xcassets */,
 				3997E6BD22A7565700A7B1E6 /* Info.plist */,
@@ -156,6 +159,7 @@
 				3997E6C622A759C900A7B1E6 /* RecipeManager.swift in Sources */,
 				3997E6B422A7565500A7B1E6 /* ViewController.swift in Sources */,
 				3997E6B222A7565500A7B1E6 /* AppDelegate.swift in Sources */,
+				395C15D222A81C8300D7704B /* UserDefaultsManager.swift in Sources */,
 				3997E6CC22A760D600A7B1E6 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

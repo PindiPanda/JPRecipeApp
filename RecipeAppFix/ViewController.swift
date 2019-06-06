@@ -35,7 +35,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.textLabel?.textColor = UIColor.white
         let recipe = RecipeManager.recipes[indexPath.item]
         cell.textLabel?.backgroundColor = UIColor.white.withAlphaComponent(0.0)
-        cell.textLabel?.font = UIFont(name:"AvenirNext-Medium", size: 18)
+        cell.textLabel?.font = UIFont(name:"AvenirNext-DemiBold", size: 18)
         cell.textLabel?.text = recipe.title
         let backgroundView = UIView()
         backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.2)
@@ -49,6 +49,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if (editingStyle == .delete){
             RecipeManager.DeleteRecipe(id: indexPath.item)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            UserDefaultsManager.synchronize()
         }
     }
     

@@ -21,7 +21,9 @@ class AddViewController: UIViewController, UITextViewDelegate {
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        recipeContent.text = ""
+        if (recipeContent.text == "Instructions"){
+            recipeContent.text = ""
+        }
     }
     
     @objc func textTitleDidChange(){
@@ -29,15 +31,11 @@ class AddViewController: UIViewController, UITextViewDelegate {
     }
     
     @objc func recipeContentDidChange(){
-        if(recipeContent.text != ""){
-            doneButton.isEnabled = true
-        }else{
-            doneButton.isEnabled = false
-        }
         handleAddButtonState()
     }
     
     @IBAction func doneButton_click(_ sender: Any) {
+        titleText.resignFirstResponder()
         recipeContent.resignFirstResponder()
         doneButton.isEnabled = false
     }
@@ -54,23 +52,21 @@ class AddViewController: UIViewController, UITextViewDelegate {
             addButton.isEnabled = false
             addButton.setTitleColor(UIColor.lightGray, for: UIControl.State.normal)
         }
+        if(titleText.text != "" || recipeContent.text != ""){
+            doneButton.isEnabled = true
+        }
     }
     
     @IBAction func addButton_click(_ sender: Any) {
         activityIndicator.startAnimating()
         
         RecipeManager.AddRecipe(title: titleText.text!, content: recipeContent.text!)
-        titleText.text = ""
-        recipeContent.text = ""
         
         let time = DispatchTime.now() + DispatchTimeInterval.milliseconds(500)
         DispatchQueue.main.asyncAfter(deadline: time) {
             self.activityIndicator.stopAnimating()
         }
-        doneButton.isEnabled = false
-        addButton.isEnabled = false
-        addButton.setTitleColor(UIColor.lightGray, for: UIControl.State.normal)
-        
         UserDefaultsManager.synchronize()
+        self.navigationController?.popViewController(animated: true)
     }
 }

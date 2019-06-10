@@ -13,8 +13,8 @@ class UserDefaultsManager: NSObject {
     
     class func synchronize(){
         let myData = NSKeyedArchiver.archivedData(withRootObject: RecipeManager.recipes)
-        UserDefaults.standard.set(myData, forKey: "recipearray")
-        UserDefaults.standard.synchronize()
+        userDefaults.set(myData, forKey: "recipearray")
+        //UserDefaults.standard.synchronize()
     }
     
     class func initializeDefaults() {

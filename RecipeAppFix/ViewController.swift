@@ -3,11 +3,22 @@ import UIKit
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var editButton: UIBarButtonItem!
+    
+    @IBAction func edit(_ sender: Any) {
+        tableView.isEditing = !tableView.isEditing
+        switch tableView.isEditing {
+        case true:
+            editButton.title = "Done"
+        case false:
+            editButton.title = "Edit"
+            tableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 70
-        
         UserDefaultsManager.initializeDefaults()
         
     }
@@ -16,7 +27,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidAppear(animated)
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
-        tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,7 +46,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.textLabel?.textColor = UIColor.white
         let recipe = RecipeManager.recipes[indexPath.item]
         cell.textLabel?.backgroundColor = UIColor.white.withAlphaComponent(0.0)
-        cell.textLabel?.font = UIFont(name:"AvenirNext-DemiBold", size: 18)
+        cell.textLabel?.font = UIFont(name:"AvenirNext-Medium", size: 18)
         cell.textLabel?.text = recipe.title
         let backgroundView = UIView()
         backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.2)
@@ -50,8 +60,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if (editingStyle == .delete){
             RecipeManager.DeleteRecipe(id: indexPath.item)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            UserDefaultsManager.synchronize()
+
         }
+    }
+    
+    internal func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool{
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        tableView.reloadData()
+        let item = RecipeManager.recipes[sourceIndexPath.row]
+        RecipeManager.DeleteRecipe(id: sourceIndexPath.row)
+        RecipeManager.recipes.insert(item, at: destinationIndexPath.row)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -85,7 +85,6 @@ class AddViewController: UIViewController, UITextViewDelegate {
         DispatchQueue.main.asyncAfter(deadline: time) {
             self.activityIndicator.stopAnimating()
         }
-        UserDefaultsManager.synchronize()
         self.navigationController?.popViewController(animated: true)
     }
 }

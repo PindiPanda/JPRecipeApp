@@ -3,34 +3,35 @@ import UIKit
 class DetailViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     var preRecipe: Recipe?
+    var imagePicker: UIImagePickerController!
+    
     @IBOutlet var recipeTitle: UILabel!
     @IBOutlet var recipeContent: UITextView!
     @IBOutlet var textViewHC: NSLayoutConstraint!
     @IBOutlet var bgImageView: UIImageView!
     
     @IBAction func importImage(_ sender: Any) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
-        imagePicker.allowsEditing = false
-        self.present(imagePicker, animated: true){
+            self.present(imagePicker, animated: true){
         }
     }
     
-    @objc(imagePickerController:didFinishPickingMediaWithInfo:) func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
-            let imageData:NSData = image.pngData()! as NSData
+            let imageData:NSData = image.jpegData(compressionQuality: 0.25)! as NSData
             self.bgImageView.image = UIImage(data: imageData as Data)
             preRecipe?.addImageData(newImageData: imageData)
-            UserDefaultsManager.synchronize()
         }
         self.dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         
+        imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
+
         recipeContent.backgroundColor = UIColor.black.withAlphaComponent(0.2)
         if let imageData = preRecipe?.bkImageData{
             self.bgImageView.image = UIImage(data: imageData as Data)

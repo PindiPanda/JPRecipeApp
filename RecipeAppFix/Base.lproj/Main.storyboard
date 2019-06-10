@@ -17,7 +17,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Qfw-S0-ERg">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="b23-0l-pvc"/>
@@ -40,7 +40,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="g5g-Dp-UnB">
-                                <rect key="frame" x="16" y="98" width="382" height="754"/>
+                                <rect key="frame" x="16" y="208" width="382" height="644"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="customcell" id="YIu-uk-xxP" customClass="customcell" customModule="RecipeAppFix" customModuleProvider="target">
@@ -60,17 +60,34 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="qEc-a9-p9I"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Parker's Recipes" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XJl-eK-Q34">
+                                <rect key="frame" x="16" y="98" width="382" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="aTg-eX-Ss9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="36"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="g5g-Dp-UnB" firstAttribute="leading" secondItem="ZPT-wv-wD1" secondAttribute="leading" constant="16" id="3wk-lN-R5M"/>
-                            <constraint firstItem="g5g-Dp-UnB" firstAttribute="top" secondItem="ZPT-wv-wD1" secondAttribute="top" constant="10" id="Syo-4y-uKo"/>
+                            <constraint firstItem="ZPT-wv-wD1" firstAttribute="trailing" secondItem="XJl-eK-Q34" secondAttribute="trailing" constant="16" id="5JA-fn-EYO"/>
+                            <constraint firstItem="XJl-eK-Q34" firstAttribute="leading" secondItem="ZPT-wv-wD1" secondAttribute="leading" constant="16" id="X9O-6j-3xc"/>
                             <constraint firstItem="ZPT-wv-wD1" firstAttribute="bottom" secondItem="g5g-Dp-UnB" secondAttribute="bottom" constant="10" id="ic6-kY-Mqq"/>
+                            <constraint firstItem="XJl-eK-Q34" firstAttribute="top" secondItem="ZPT-wv-wD1" secondAttribute="top" constant="10" id="o59-P0-OCR"/>
                             <constraint firstItem="ZPT-wv-wD1" firstAttribute="trailing" secondItem="g5g-Dp-UnB" secondAttribute="trailing" constant="16" id="s2s-Br-WOv"/>
+                            <constraint firstItem="g5g-Dp-UnB" firstAttribute="top" secondItem="XJl-eK-Q34" secondAttribute="bottom" constant="10" id="t8X-dd-Qgv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZPT-wv-wD1"/>
                     </view>
                     <navigationItem key="navigationItem" id="zAz-R8-Iob">
+                        <barButtonItem key="leftBarButtonItem" title="Edit" id="bgL-b7-9pu">
+                            <connections>
+                                <action selector="edit:" destination="BYZ-38-t0r" id="1Nf-7M-le0"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="CvA-Rh-8kK">
                             <connections>
                                 <segue destination="dKa-he-cnf" kind="show" id="BjS-91-ihv"/>
@@ -78,6 +95,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="editButton" destination="bgL-b7-9pu" id="wUD-tb-791"/>
                         <outlet property="tableView" destination="g5g-Dp-UnB" id="aA9-nt-e8u"/>
                     </connections>
                 </viewController>

@@ -4,6 +4,7 @@ class Recipe: NSObject, NSCoding {
     
     var title: String?
     var content: String?
+    var bkImageData: NSData?
     
     init (title: String, content: String){
         self.title = title
@@ -12,6 +13,9 @@ class Recipe: NSObject, NSCoding {
     override init (){
         super.init()
     }
+    func addImageData(newImageData: NSData){
+        self.bkImageData = newImageData
+    }
     
     func encode(with aCoder: NSCoder) {
         if let titleEncoded = title {
@@ -19,6 +23,9 @@ class Recipe: NSObject, NSCoding {
         }
         if let contentEncoded = content {
             aCoder.encode(contentEncoded, forKey: "content")
+        }
+        if let imageEncoded = bkImageData {
+            aCoder.encode(imageEncoded, forKey: "image")
         }
     }
     
@@ -29,5 +36,9 @@ class Recipe: NSObject, NSCoding {
         if let contentDecoded = aDecoder.decodeObject(forKey: "content") as? String{
             content = contentDecoded
         }
+        if let imageDecoded = aDecoder.decodeObject(forKey: "image") as? NSData{
+            bkImageData = imageDecoded
+        }
     }
 }
+

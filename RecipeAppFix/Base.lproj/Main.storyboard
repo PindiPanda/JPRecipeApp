@@ -17,6 +17,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Qfw-S0-ERg">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="b23-0l-pvc"/>
@@ -69,7 +70,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZPT-wv-wD1"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Recipes" id="zAz-R8-Iob">
+                    <navigationItem key="navigationItem" id="zAz-R8-Iob">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="CvA-Rh-8kK">
                             <connections>
                                 <segue destination="dKa-he-cnf" kind="show" id="BjS-91-ihv"/>
@@ -193,7 +194,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="y78-Na-6hk"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Add Recipe" id="3kz-jW-TXM">
+                    <navigationItem key="navigationItem" id="3kz-jW-TXM">
                         <barButtonItem key="rightBarButtonItem" enabled="NO" style="done" systemItem="done" id="vBp-HB-Ica">
                             <connections>
                                 <action selector="doneButton_click:" destination="dKa-he-cnf" id="9el-rL-Y79"/>
@@ -206,6 +207,7 @@
                         <outlet property="doneButton" destination="vBp-HB-Ica" id="Msk-2V-3Ke"/>
                         <outlet property="recipeContent" destination="AEA-Sa-0vO" id="iwP-hV-TsV"/>
                         <outlet property="titleText" destination="yS4-aU-Vy1" id="jhw-8y-mcB"/>
+                        <outlet property="txtConst" destination="q0b-2h-QGf" id="kSF-gi-aZG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zcT-Wa-sy4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -223,9 +225,12 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="honeycomb" translatesAutoresizingMaskIntoConstraints="NO" id="jRD-bd-mFZ">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" showsHorizontalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eOt-Av-P3m">
-                                <rect key="frame" x="16" y="158" width="382" height="694"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" verticalHuggingPriority="1000" showsHorizontalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eOt-Av-P3m">
+                                <rect key="frame" x="16" y="158" width="382" height="500"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="100" constant="500" id="vdR-47-Wui"/>
+                                </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -249,21 +254,30 @@
                         <constraints>
                             <constraint firstItem="eOt-Av-P3m" firstAttribute="top" secondItem="PWU-VO-SN1" secondAttribute="bottom" constant="10" id="1mR-Z2-3tS"/>
                             <constraint firstItem="jRD-bd-mFZ" firstAttribute="trailing" secondItem="6qy-CW-AzD" secondAttribute="trailing" id="2uK-Si-EgN"/>
-                            <constraint firstItem="6qy-CW-AzD" firstAttribute="bottom" secondItem="eOt-Av-P3m" secondAttribute="bottom" constant="10" id="9OO-g3-CsJ"/>
                             <constraint firstItem="PWU-VO-SN1" firstAttribute="leading" secondItem="6qy-CW-AzD" secondAttribute="leading" constant="16" id="Dc8-R2-Jag"/>
                             <constraint firstItem="eOt-Av-P3m" firstAttribute="leading" secondItem="6qy-CW-AzD" secondAttribute="leading" constant="16" id="NR6-y6-kQg"/>
                             <constraint firstAttribute="bottom" secondItem="jRD-bd-mFZ" secondAttribute="bottom" id="Om9-zi-2LQ"/>
                             <constraint firstItem="6qy-CW-AzD" firstAttribute="trailing" secondItem="PWU-VO-SN1" secondAttribute="trailing" constant="16" id="PId-x8-DgV"/>
                             <constraint firstItem="PWU-VO-SN1" firstAttribute="top" secondItem="6qy-CW-AzD" secondAttribute="top" constant="10" id="USa-hb-M3u"/>
                             <constraint firstItem="jRD-bd-mFZ" firstAttribute="leading" secondItem="6qy-CW-AzD" secondAttribute="leading" id="bcq-ru-w7M"/>
+                            <constraint firstItem="6qy-CW-AzD" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="eOt-Av-P3m" secondAttribute="bottom" constant="10" id="cnr-3g-YXe"/>
                             <constraint firstItem="jRD-bd-mFZ" firstAttribute="top" secondItem="lcq-fB-Sx7" secondAttribute="top" id="kK7-Gj-fUq"/>
                             <constraint firstItem="6qy-CW-AzD" firstAttribute="trailing" secondItem="eOt-Av-P3m" secondAttribute="trailing" constant="16" id="yYW-Fd-PeP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6qy-CW-AzD"/>
                     </view>
+                    <navigationItem key="navigationItem" id="lkJ-uD-ae9">
+                        <barButtonItem key="rightBarButtonItem" title="Add Image" id="zQA-p1-Zcp">
+                            <connections>
+                                <action selector="importImage:" destination="50o-fj-Dwd" id="Bc8-lq-i60"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="bgImageView" destination="jRD-bd-mFZ" id="Efm-fA-WnX"/>
                         <outlet property="recipeContent" destination="eOt-Av-P3m" id="gUE-LY-hsA"/>
                         <outlet property="recipeTitle" destination="PWU-VO-SN1" id="Zgj-fs-65q"/>
+                        <outlet property="textViewHC" destination="vdR-47-Wui" id="uzq-E2-OH0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wom-fc-FAc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -276,4 +290,5 @@
         <image name="honeycomb" width="750" height="1334"/>
         <image name="strawberries" width="750" height="1334"/>
     </resources>
+    <color key="tintColor" cocoaTouchSystemColor="lightTextColor"/>
 </document>

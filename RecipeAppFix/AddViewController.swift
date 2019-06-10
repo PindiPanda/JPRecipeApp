@@ -7,6 +7,8 @@ class AddViewController: UIViewController, UITextViewDelegate {
     @IBOutlet var doneButton: UIBarButtonItem!
     @IBOutlet var addButton: UIButton!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet var txtConst: NSLayoutConstraint!
+    var initTxtConst: CGFloat!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,8 +18,13 @@ class AddViewController: UIViewController, UITextViewDelegate {
         
         addButton.isEnabled = false
         
+        initTxtConst = txtConst.constant
+        
         NotificationCenter.default.addObserver(self, selector: #selector(AddViewController.textTitleDidChange), name: UITextField.textDidChangeNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(AddViewController.recipeContentDidChange), name: UITextView.textDidChangeNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(AddViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AddViewController.keyboardWillBeHidden), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -32,6 +39,18 @@ class AddViewController: UIViewController, UITextViewDelegate {
     
     @objc func recipeContentDidChange(){
         handleAddButtonState()
+    }
+    
+    @objc func keyboardWillShow(aNotification:NSNotification) {
+        if let keyboardFrame: NSValue = aNotification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let botSafeArea = view.safeAreaInsets.bottom
+            let keyboardHeight = keyboardFrame.cgRectValue.height
+            txtConst.constant =  initTxtConst + keyboardHeight - (botSafeArea + 10 + 75 + 10 + 75)
+        }
+    }
+    
+    @objc func keyboardWillBeHidden(aNotification:NSNotification) {
+        txtConst.constant = initTxtConst
     }
     
     @IBAction func doneButton_click(_ sender: Any) {

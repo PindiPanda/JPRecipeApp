@@ -45,7 +45,7 @@ class AddViewController: UIViewController, UITextViewDelegate {
         if let keyboardFrame: NSValue = aNotification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let botSafeArea = view.safeAreaInsets.bottom
             let keyboardHeight = keyboardFrame.cgRectValue.height
-            txtConst.constant =  initTxtConst + keyboardHeight - (botSafeArea + 10 + 75 + 10 + 75)
+            txtConst.constant =  initTxtConst + keyboardHeight - (botSafeArea + 10 + 75)
         }
     }
     
@@ -78,13 +78,12 @@ class AddViewController: UIViewController, UITextViewDelegate {
     
     @IBAction func addButton_click(_ sender: Any) {
         activityIndicator.startAnimating()
-        
         RecipeManager.AddRecipe(title: titleText.text!, content: recipeContent.text!)
         
         let time = DispatchTime.now() + DispatchTimeInterval.milliseconds(500)
         DispatchQueue.main.asyncAfter(deadline: time) {
             self.activityIndicator.stopAnimating()
+            self.navigationController?.popViewController(animated: true)
         }
-        self.navigationController?.popViewController(animated: true)
     }
 }

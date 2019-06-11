@@ -4,7 +4,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var editButton: UIBarButtonItem!
-    
+    @IBOutlet var tableViewHC: NSLayoutConstraint!
+   
     @IBAction func edit(_ sender: Any) {
         tableView.isEditing = !tableView.isEditing
         switch tableView.isEditing {
@@ -12,7 +13,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             editButton.title = "Done"
         case false:
             editButton.title = "Edit"
-            tableView.reloadData()
         }
     }
     
@@ -20,13 +20,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidLoad()
         tableView.rowHeight = 70
         UserDefaultsManager.initializeDefaults()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
+        tableView.reloadData()
+        resizeTableView()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -52,7 +53,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.2)
         cell.selectedBackgroundView = backgroundView
         cell.recipe = recipe
-        cell.layer.cornerRadius = 10
+        //cell.layer.cornerRadius = 10
         return cell
     }
     
@@ -60,7 +61,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if (editingStyle == .delete){
             RecipeManager.DeleteRecipe(id: indexPath.item)
             tableView.deleteRows(at: [indexPath], with: .fade)
-
+            resizeTableView()
         }
     }
     
@@ -78,8 +79,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "detailview"){
             let cell = sender as! customcell
-            let detailview = segue.destination as! DetailViewController
+            //let detailview = segue.destination as! DetailViewController
+            let detailview = segue.destination as! ScrollViewController
             detailview.preRecipe = cell.recipe
+            let selectedRow: IndexPath? = tableView.indexPathForSelectedRow
+            if let selectedRowNotNill = selectedRow {
+                tableView.deselectRow(at: selectedRowNotNill, animated: true)
+            }
+        }
+    }
+    
+    func resizeTableView(){
+        tableView.isScrollEnabled = false
+        let numRecipes = CGFloat(RecipeManager.recipes.count)
+        tableViewHC.constant = numRecipes * tableView.rowHeight - 1
+        if (RecipeManager.recipes.count > 8){
+            tableView.isScrollEnabled = true
         }
     }
 }

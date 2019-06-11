@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		395C15D222A81C8300D7704B /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395C15D122A81C8300D7704B /* UserDefaultsManager.swift */; };
+		397BB90E22B011260044B372 /* ScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397BB90D22B011260044B372 /* ScrollViewController.swift */; };
 		3997E6B222A7565500A7B1E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3997E6B122A7565500A7B1E6 /* AppDelegate.swift */; };
 		3997E6B422A7565500A7B1E6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3997E6B322A7565500A7B1E6 /* ViewController.swift */; };
 		3997E6B722A7565500A7B1E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3997E6B522A7565500A7B1E6 /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		395C15D122A81C8300D7704B /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		397BB90D22B011260044B372 /* ScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewController.swift; sourceTree = "<group>"; };
 		3997E6AE22A7565500A7B1E6 /* RecipeAppFix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeAppFix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3997E6B122A7565500A7B1E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3997E6B322A7565500A7B1E6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				3997E6B322A7565500A7B1E6 /* ViewController.swift */,
 				3997E6C922A760A800A7B1E6 /* AddViewController.swift */,
 				3997E6CB22A760D600A7B1E6 /* DetailViewController.swift */,
+				397BB90D22B011260044B372 /* ScrollViewController.swift */,
 				3997E6C322A7599E00A7B1E6 /* Recipe.swift */,
 				3997E6C522A759C900A7B1E6 /* RecipeManager.swift */,
 				3997E6C722A75BFE00A7B1E6 /* customcell.swift */,
@@ -157,6 +160,7 @@
 				3997E6C422A7599E00A7B1E6 /* Recipe.swift in Sources */,
 				3997E6CA22A760A800A7B1E6 /* AddViewController.swift in Sources */,
 				3997E6C622A759C900A7B1E6 /* RecipeManager.swift in Sources */,
+				397BB90E22B011260044B372 /* ScrollViewController.swift in Sources */,
 				3997E6B422A7565500A7B1E6 /* ViewController.swift in Sources */,
 				3997E6B222A7565500A7B1E6 /* AppDelegate.swift in Sources */,
 				395C15D222A81C8300D7704B /* UserDefaultsManager.swift in Sources */,
